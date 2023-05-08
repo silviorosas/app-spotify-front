@@ -1,0 +1,33 @@
+<h2 style="margin-left: 6px; margin-top: 26px;">Mientras navegas por nuestro sitio selecciona la música de tu agrado.</h2>
+
+<div class="wrapper">
+
+  <div class="limit-width" #asBoxInput>
+    <input
+      class="input-src"
+      [ngClass]="{'loading':isLoading}"
+      [spellcheck]="false"
+      placeholder="Ingresa nombre del artista a buscar"
+      type="text"
+      (ngModelChange)="search($event)"
+      [(ngModel)]="src">
+
+      <div class="results">
+        <ul>
+          <li *ngFor="let item of data$ | async">
+            <a class="name" target="_blank" [href]="item?.external_urls?.spotify">
+              {{item.name}}
+            </a>
+            <img [src]="item.album.images[2].url" alt="">
+          </li>
+        </ul>
+      </div>
+
+  </div>
+
+</div>
+<div style="text-align: center;">
+  <img  src="assets/spotify.png" alt="logo spotify">
+</div>
+
+
